@@ -1,0 +1,66 @@
+.calendar-container,
+.calendar-controller,
+.calendar-header,
+.calendar-picker,
+.calendar-container .item,
+.calendar-header .item {
+  display: flex;
+  align-items: center;
+  line-height: normal;
+}
+.calendar-container,
+.calendar-controller,
+.calendar-header {
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.calendar-container .item,
+.calendar-header .item {
+  justify-content: center;
+  width: 107rpx;
+  font-size: 28rpx;
+  height: 80rpx;
+}
+.calendar-header .item {
+  color: #666;
+}
+.calendar-container .item {
+  color: #111;
+}
+.calendar-container .item.other-month {
+  color: #999;
+}
+.calendar-container .item.today {
+  color: #6190e8;
+  font-weight: 600;
+}
+.calendar-picker {
+  font-size: 30rpx;
+  color: #111;
+  padding: 20rpx 0;
+}
+.month-format {
+  margin: 0 30rpx;
+}
+.arrow {
+  display: flex;
+  padding: 10rpx 15rpx;
+  background: #f7f8fc;
+}
+.arrow::after {
+  content: "";
+  width: 14rpx;
+  height: 14rpx;
+  border-top: 4rpx solid #ccc;
+  border-left: 4rpx solid #ccc;
+}
+.arrow.left::after {
+  transform: rotateY(-45deg) rotate(-47deg) skew(5deg);
+}
+.arrow.right::after {
+  transform: rotateY(-135deg) rotate(-47deg) skew(5deg);
+}
+.calendar-swiper {
+  height: 480rpx;
+}
