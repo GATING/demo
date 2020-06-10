@@ -1,0 +1,17 @@
+{
+  "name": "canvas-clip-image",
+  "version": "1.0.0",
+  "description": "clip image demo",
+  "main": "index.js",
+  "scripts": {
+    "build": "node app.js"
+  },
+  "keywords": [],
+  "author": "gating",
+  "license": "ISC",
+  "dependencies": {
+    "archiver": "^4.0.1",
+    "canvas": "^2.6.1",
+    "image-size": "^0.8.3"
+  }
+}
