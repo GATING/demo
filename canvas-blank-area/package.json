@@ -1,0 +1,18 @@
+{
+  "name": "canvas-blank-area",
+  "version": "1.0.0",
+  "description": "fill in blank area demo",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run build"
+  },
+  "keywords": [],
+  "author": "gating",
+  "license": "ISC",
+  "dependencies": {
+    "archiver": "^4.0.1",
+    "canvas": "^2.6.1",
+    "glob": "^7.1.6",
+    "image-size": "^0.8.3"
+  }
+}
