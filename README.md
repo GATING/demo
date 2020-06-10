@@ -20,8 +20,8 @@
 
   > 配套教程(博客园) [手把手教你写一个符合自己需求的小程序日历组件](https://www.cnblogs.com/gating/p/13072823.html)
 
-* [node 图片四周填充透明区域](https://gatings.cn)
+* [node 实现图片四周填充透明区域](https://gatings.cn)
 
-  > 配套教程 [node 图片四周填充透明区域](https://gatings.cn/2020-06-10/node%E5%9B%BE%E7%89%87%E5%9B%9B%E5%91%A8%E5%A1%AB%E5%85%85%E9%80%8F%E6%98%8E%E5%8C%BA%E5%9F%9F/)
+  > 配套教程 [node 实现图片四周填充透明区域](https://gatings.cn/2020-06-10/node%E5%9B%BE%E7%89%87%E5%9B%9B%E5%91%A8%E5%A1%AB%E5%85%85%E9%80%8F%E6%98%8E%E5%8C%BA%E5%9F%9F/)
 
-  > 配套教程(博客园) [node 图片四周填充透明区域](https://www.cnblogs.com/gating/p/13084269.html)
+  > 配套教程(博客园) [node 实现图片四周填充透明区域](https://www.cnblogs.com/gating/p/13084269.html)
