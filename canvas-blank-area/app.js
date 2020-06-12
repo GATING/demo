@@ -6,8 +6,6 @@ const { basename } = require("path");
 const archiver = require("archiver");
 // 导入canvas库，用于裁剪图片
 const { createCanvas, loadImage } = require("canvas");
-// 获取图片大小
-const sizeOf = require("image-size");
 // 批量获取路径
 const glob = require("glob");
 !(async () => {
@@ -22,7 +20,7 @@ const glob = require("glob");
   for (let i = 0; i < paths.length; i++) {
     const path = paths[i];
     const image = await loadImage(path);
-    const { width, height } = await sizeOf(path);
+    const { width, height } = image;
     const canvas = createCanvas(81, 81);
     const ctx = canvas.getContext("2d");
     ctx.drawImage(image, (81 - width) / 2, (81 - height) / 2);
