@@ -1,0 +1,17 @@
+{
+  "name": "canvas-image-resize",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "gating",
+  "license": "ISC",
+  "dependencies": {
+    "archiver": "^4.0.1",
+    "canvas": "^2.6.1",
+    "glob": "^7.1.6"
+  }
+}
