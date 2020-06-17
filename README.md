@@ -25,3 +25,9 @@
   > 配套教程 [node 实现图片四周填充透明区域](https://gatings.cn/2020-06-10/node%E5%9B%BE%E7%89%87%E5%9B%9B%E5%91%A8%E5%A1%AB%E5%85%85%E9%80%8F%E6%98%8E%E5%8C%BA%E5%9F%9F/)
 
   > 配套教程(博客园) [node 实现图片四周填充透明区域](https://www.cnblogs.com/gating/p/13084269.html)
+
+- [node 实现文件属性批量修改(时间属性)](https://gatings.cn)
+
+  > 配套教程 [node 实现文件属性批量修改(时间属性)](https://gatings.cn/2020-06-17/node%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9/)
+
+  > 配套教程(博客园) [node 实现文件属性批量修改(时间属性)](https://www.cnblogs.com/gating/p/13154242.html)

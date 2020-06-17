@@ -1,0 +1,15 @@
+{
+  "name": "files",
+  "version": "1.0.0",
+  "description": "a batch-tools-files-tools demo",
+  "main": "app.js",
+  "scripts": {
+    "build": "node app.js"
+  },
+  "author": "gating",
+  "license": "ISC",
+  "dependencies": {
+    "@ronomon/utimes": "https://github.com/Jule-/utimes.git#napi-migration",
+    "glob": "^7.1.6"
+  }
+}
