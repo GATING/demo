@@ -88,7 +88,8 @@ export default {
         },
         diyForm: {
           diySerial: "",
-          separator: ""
+          separator: "",
+          diyEnable: false
         }
       },
       fileOutputProps: {
@@ -100,15 +101,32 @@ export default {
   },
   computed: {
     newFiles() {
+      const { fileSettings, diyForm } = this.fileSettingsProps;
+      const { ext, enable } = this.fileOutputProps;
+      const { diySerial, separator, diyEnable } = diyForm;
+      console.log(this.getRange(diySerial, separator, diyEnable));
       return getNewFileList(
         this.oldFiles,
-        this.fileSettingsProps.fileSettings,
-        this.fileOutputProps.ext,
-        this.fileOutputProps.enable
+        fileSettings,
+        ext,
+        enable,
+        this.getRange(diySerial, separator, diyEnable)
       );
     }
   },
+  watch: {
+    "fileSettingsProps.diyForm.diySerial"(val) {
+      if (!val) {
+        this.fileSettingsProps.diyForm.diyEnable = !1;
+      }
+    }
+  },
   methods: {
+    getRange(diySerial, separator, enable) {
+      if (!enable) return null;
+      !separator ? (separator = ",") : null;
+      return diySerial.split(separator);
+    },
     getProps(key) {
       if (key === "fileListProps") {
         return {

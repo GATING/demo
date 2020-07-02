@@ -10,13 +10,13 @@ export const isEmpty = /^\s*$/;
 export const testDot = (str) => /^\s*\.+\s*$/.test(str);
 
 /**
- * 序号为字母
+ * 序号是否为字母
  * @param { string }} str 序号
  */
 export const testWord = (str) => /^[a-zA-Z]+$/.test(str);
 
 /**
- * 返回是否符合默认序号规范
+ * 是否符合默认序号规范
  * @param { string } str 序号
  * @return { object } 返回是否符合默认序号规范（纯字母/纯数字）
  */
