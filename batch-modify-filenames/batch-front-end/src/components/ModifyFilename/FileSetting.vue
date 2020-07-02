@@ -66,6 +66,9 @@
             aria-placeholder="请输入自定义序号分隔符"
           />
         </a-form-model-item>
+        <a-form-model-item label="是否启用自定义">
+          <a-switch v-model="diyForm.diyEnable" :disabled="disabled" />
+        </a-form-model-item>
       </a-form-model>
     </a-modal>
   </a-row>
@@ -77,14 +80,14 @@ import {
   Col as ACol,
   Icon as AIcon,
   Input as AInput,
+  Switch as ASwitch,
   Button as AButton,
   InputNumber as AInputNumber,
   FormModel as AFormModel
 } from "ant-design-vue";
-
+// 是否符合默认序号规范
+import { isDefaultSerialNum } from "@/utils/regexp";
 const AFormModelItem = AFormModel.Item;
-
-const testserialNum = str => !/(^\d+$)|(^[a-zA-Z]+$)|(^\s*$)/.test(str);
 export default {
   name: "FileSetting",
   props: {
@@ -102,10 +105,17 @@ export default {
     ACol,
     AIcon,
     AInput,
+    ASwitch,
     AButton,
     AInputNumber,
     AFormModel,
     AFormModelItem
+  },
+  // 没有自定义序号时不可操作
+  computed: {
+    disabled() {
+      return !this.diyForm.diySerial;
+    }
   },
   data() {
     return {
@@ -123,8 +133,10 @@ export default {
   },
   methods: {
     handleModify() {
+      // 获取填写的序号
       const serialNum = this.fileSettings.serialNum.value;
-      if (testserialNum(serialNum)) {
+      // 当没有启用自定义时，走默认规则
+      if (isDefaultSerialNum(serialNum) && !this.diyForm.enable) {
         return this.$message.error("请输入正确的序号，格式为纯数字或纯字母");
       }
     },
