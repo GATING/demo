@@ -1,0 +1,22 @@
+{
+  "name": "batch-modify-filenames",
+  "version": "1.0.0",
+  "description": "a batch modify file name demo",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "author": "gating",
+  "license": "ISC",
+  "dependencies": {
+    "archiver": "^4.0.1",
+    "koa": "^2.13.0",
+    "koa-body": "^4.2.0",
+    "koa-router": "^9.0.1",
+    "koa-static": "^5.0.0",
+    "uuid": "^8.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
