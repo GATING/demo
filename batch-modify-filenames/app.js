@@ -41,12 +41,6 @@ app.use(
     maxage: 60 * 60 * 1000,
   })
 );
-// 上传所需要的
-app.use(
-  serve(resolve(__dirname, "uploads"), {
-    maxage: 60 * 60 * 1000,
-  })
-);
 // 初始化路由
 initRoutes(app);
 app.listen(3000, () => {
