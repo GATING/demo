@@ -1,4 +1,4 @@
-const { resolve } = require("path");
+const { resolve, join } = require("path");
 const Koa = require("koa");
 // 解析post请求，
 const koaBody = require("koa-body");
@@ -28,7 +28,7 @@ app.use(
         // 检查文件夹是否存在如果不存在则新建文件夹
         confirmPath(dir);
         // 重新覆盖 file.path 属性
-        file.path = `${dir}/${fileName}`;
+        file.path = join(dir, fileName);
         // 便于后续中间件使用
         // app.context.uploadPath = `${dirName}/${fileName}`;
       },

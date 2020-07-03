@@ -15,7 +15,7 @@ const getNewFileExt = (fileExt, oldExt, newExt, enable) => {
   if ((oldExt === "*" || fileExt === oldExt) && enable) {
     return newExt;
   } else {
-    return fileExt;
+    return fileExt || "";
   }
 };
 

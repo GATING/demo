@@ -83,22 +83,24 @@ import {
   Switch as ASwitch,
   Button as AButton,
   InputNumber as AInputNumber,
-  FormModel as AFormModel
+  FormModel as AFormModel,
 } from "ant-design-vue";
+import { saveAs } from "file-saver";
 // 是否符合默认序号规范
 import { isDefaultSerialNum } from "@/utils/regexp";
 const AFormModelItem = AFormModel.Item;
+
 export default {
   name: "FileSetting",
   props: {
     fileSettings: {
       type: Object,
-      required: true
+      required: true,
     },
     diyForm: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   components: {
     ARow,
@@ -109,13 +111,14 @@ export default {
     AButton,
     AInputNumber,
     AFormModel,
-    AFormModelItem
+    AFormModelItem,
   },
+  inject: ["parent"],
   // 没有自定义序号时不可操作
   computed: {
     disabled() {
       return !this.diyForm.diySerial;
-    }
+    },
   },
   data() {
     return {
@@ -125,10 +128,10 @@ export default {
           {
             required: true,
             message: "请输入自定义序号",
-            trigger: "blur"
-          }
-        ]
-      }
+            trigger: "blur",
+          },
+        ],
+      },
     };
   },
   methods: {
@@ -139,17 +142,45 @@ export default {
       if (isDefaultSerialNum(serialNum) && !this.diyForm.enable) {
         return this.$message.error("请输入正确的序号，格式为纯数字或纯字母");
       }
-      this.$http.post("/upload");
+      const { newFiles, oldFiles } = this.parent;
+      const data = new FormData();
+      for (let i = 0; i < oldFiles.length; i++) {
+        const { name } = newFiles[i];
+        data.append("files", oldFiles[i]);
+        data.append("name", name);
+      }
+      this.axios({
+        method: "post",
+        url: "/upload",
+        data,
+        responseType: "blob",
+      })
+        .then((res) => {
+          const disposition = res.headers["content-disposition"];
+          // 转换为Blob对象
+          let file = new Blob([res.data], {
+            type: "application/zip",
+          });
+          // 下载文件
+          saveAs(
+            file,
+            disposition.replace(/^.*filename="?([^"]+)"?.*$/, "$1") ||
+              "files.zip"
+          );
+          this.$message.success("修改成功");
+        })
+        .catch(() => {
+          this.$message.error("发生错误");
+        });
     },
     handleDiySerialNum() {
-      this.$refs.diyForm.validate(valid => {
+      this.$refs.diyForm.validate((valid) => {
         if (!valid) {
           return false;
         }
         this.serialNumVisable = !1;
       });
-    }
-  }
+    },
+  },
 };
 </script>
-

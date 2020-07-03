@@ -104,7 +104,6 @@ export default {
       const { fileSettings, diyForm } = this.fileSettingsProps;
       const { ext, enable } = this.fileOutputProps;
       const { diySerial, separator, diyEnable } = diyForm;
-      console.log(this.getRange(diySerial, separator, diyEnable));
       return getNewFileList(
         this.oldFiles,
         fileSettings,
