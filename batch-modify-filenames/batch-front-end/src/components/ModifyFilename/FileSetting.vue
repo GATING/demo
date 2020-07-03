@@ -139,6 +139,7 @@ export default {
       if (isDefaultSerialNum(serialNum) && !this.diyForm.enable) {
         return this.$message.error("请输入正确的序号，格式为纯数字或纯字母");
       }
+      this.$http.post("/upload");
     },
     handleDiySerialNum() {
       this.$refs.diyForm.validate(valid => {

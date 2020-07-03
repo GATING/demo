@@ -9,6 +9,15 @@ module.exports = {
   productionSourceMap: false,
   devServer: {
     open: true,
+    proxy: {
+      "/upload": {
+        target: "http://localhost:3000",
+        changeOrigin: true,
+        pathRewrite: {
+          "^/upload": "/upload",
+        },
+      },
+    },
   },
   css: {
     loaderOptions: {
@@ -38,7 +47,7 @@ module.exports = {
     //   .use("vue-loader")
     //   .loader("vue-loader")
     //   .tap((options) => {
-    //     // vue-cli后面，已经默认修改为true
+    //     // vue-cli后面已经默认修改为true
     //     options.compilerOptions.preserveWhitespace = true;
     //     return options;
     //   })
