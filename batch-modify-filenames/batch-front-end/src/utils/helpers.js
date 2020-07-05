@@ -14,6 +14,7 @@ export const isUpper = (word) => {
  * @return { string } 返回转换后的字符串
  */
 export const convert = (num, range) => {
+  // 没有range的时候即为数字，数字我们不需要处理
   if (!range) return num;
   let word = "",
     len = range.length;

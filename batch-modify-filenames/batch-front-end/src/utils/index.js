@@ -1,7 +1,13 @@
-/* eslint-disable*/
-import { extReg, testWord, isDefaultSerialNum, isEmpty } from "./regexp";
+import {
+  extReg,
+  testWord,
+  isDefaultSerialNum,
+  isEmpty,
+  testDot,
+} from "./regexp";
 import { calculate, isUpper, convert } from "./helpers";
-import { range, padStart } from "lodash";
+import { range, padStart, startsWith } from "lodash";
+// 创建一个[0-25]的数组，并转换为[A-Z]数组供默认字母序号使用
 let convertArr = range(26).map((i) => String.fromCharCode(65 + i));
 /**
  * 获取修改后的后缀名
@@ -15,23 +21,28 @@ const getNewFileExt = (fileExt, oldExt, newExt, enable) => {
   if ((oldExt === "*" || fileExt === oldExt) && enable) {
     return newExt;
   } else {
+    // 避免没有后缀名的bug
     return fileExt || "";
   }
 };
 
 /**
- * 获取文件的的后缀名
+ * 根据输入的后缀名，获取修改文件名的的后缀名
  * @param { array } fileExt => 文件后缀名数组
  * @return { array } [oldExt, newExt] => 返回文件的后缀名
  */
 const getFileExt = (fileExt) =>
-  fileExt.map((i) => (i ? (i.startsWith(".") || i === "*" ? i : "." + i) : ""));
+  // 如果 i 不存在，返回""
+  // 如果 i 是以 "." 开头的返回i，即'.png'返回'.png'
+  // 如果 i === "*" 的返回i，即'*'返回'*'
+  // 如果是 i 是 'png'，则返回 '.png'
+  fileExt.map((i) =>
+    i ? (startsWith(i, ".") || i === "*" ? i : "." + i) : ""
+  );
 
 /**
  * 获取文件和文件后缀名
  * @param { string } filename 原始文件名
- * @param { string } preReplaceWordStr 替换前的字符
- * @param { string } replaceWordStr 替换后的字符
  * @return { array } 返回的文件和文件后缀名
  */
 const splitFilename = (filename) =>
@@ -55,14 +66,16 @@ const getFileSetting = (fileSettings) =>
   Object.values(fileSettings).map((setting) => setting.value);
 
 /**
- *  获取起始位置和补位字符
+ *  获取起始位置、补位字符和自定义数组
  * @param { string } serialNum 文件序号
  * @param { number } complement 需要补的位数
  * @param { array } range 自定义序号数组
- * @return { object } 返回起始位置和补位字符
+ * @return { object } 返回起始位置、补位字符和自定义数组
  */
 const getOptions = (serialNum, complement, range) => {
+  // 起始序号的值，补位序号
   let start, padNum;
+  // 字母和自定义序号的情况
   if (testWord(serialNum) || range) {
     if (!range) {
       // 转换大小写
@@ -71,14 +84,16 @@ const getOptions = (serialNum, complement, range) => {
       }
       range = convertArr;
     }
+    // 补位字符
     padNum = range[0];
-
     start = [...serialNum].reduce(
       (res, val, idx) => res + calculate(range, val, complement - 1 - idx),
       0
     );
   } else {
+    // 纯数字的情况
     start = serialNum ? ~~serialNum : NaN;
+    // 补位字符
     padNum = "0";
   }
   return {
@@ -87,7 +102,6 @@ const getOptions = (serialNum, complement, range) => {
     convertArr: range,
   };
 };
-
 /**
  * 获取文件名
  * @param { string } filename 旧文件名
@@ -134,10 +148,10 @@ export default function getNewFileList(
 
   return fileList.map((item) => {
     // 获取文件名和后缀名
-    let [filename, fileExt] = splitFilename(item.name);
+    let [oldFileName, fileExt] = splitFilename(item.name);
     // 获取修改后的文件名
-    filename = replaceFilename(
-      getFileName(filename, newFilename),
+    let filename = replaceFilename(
+      getFileName(oldFileName, newFilename),
       preReplaceWord,
       replaceWord
     );
@@ -148,13 +162,13 @@ export default function getNewFileList(
       "";
     filename += suffix;
     start += increment;
+    // 文件名+后缀名不能是.
+    let name = testDot(filename + fileExt) ? item.name : filename + fileExt;
     return {
       ...item,
       basename: filename,
-      name: filename + fileExt,
+      name,
       ext: fileExt,
     };
   });
 }
-
-/* eslint-disable*/

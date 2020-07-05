@@ -15,11 +15,12 @@ const app = new Koa();
 // 处理post请求的中间件
 app.use(
   koaBody({
-    multipart: true,
+    multipart: true, // 支持文件上传
     formidable: {
       maxFieldsSize: 10 * 1024 * 1024, // 设置上传文件大小最大限制，默认2M
       keepExtensions: true, // 保持拓展名
       uploadDir: resolve(__dirname, `uploads`),
+      // 文件上传前的一些设置操作
       onFileBegin(name, file) {
         // 最终要保存到的文件夹目录
         const dirName = getUploadDirName();

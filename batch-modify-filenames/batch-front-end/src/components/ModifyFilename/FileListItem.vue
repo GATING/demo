@@ -8,7 +8,7 @@
         清空
       </a-button>
     </div>
-    <a-list-item slot="renderItem" slot-scope="item">
+    <a-list-item slot="renderItem" slot-scope="item, index">
       <a-list-item-meta>
         <a-tooltip slot="title" :overlayStyle="{ maxWidth: '500px' }">
           <template slot="title">
@@ -23,7 +23,7 @@
         size="small"
         @click="
           () => {
-            delCurrent(item.path);
+            delCurrent(index);
           }
         "
       >
@@ -65,9 +65,8 @@ export default {
     "a-tooltip": Tooltip
   },
   methods: {
-    delCurrent(path) {
-      const current = this.fileList.findIndex(i => i.path === path);
-      this.fileList.splice(current, 1);
+    delCurrent(current) {
+      this.parent.oldFiles.splice(current, 1);
     },
     clearFiles() {
       this.parent.update("fileListProps", "oldFiles", []);

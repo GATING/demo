@@ -28,7 +28,7 @@
       </template>
     </a-col>
     <a-col>
-      <a-button @click="serialNumVisable = !0">
+      <a-button @click="serialNumVisible = !0">
         自定义序号
       </a-button>
     </a-col>
@@ -40,8 +40,8 @@
 
     <a-modal
       title="自定义序号"
-      :visible="serialNumVisable"
-      @cancel="serialNumVisable = !1"
+      :visible="serialNumVisible"
+      @cancel="serialNumVisible = !1"
       @ok="handleDiySerialNum"
     >
       <a-form-model
@@ -83,24 +83,27 @@ import {
   Switch as ASwitch,
   Button as AButton,
   InputNumber as AInputNumber,
-  FormModel as AFormModel,
+  FormModel as AFormModel
 } from "ant-design-vue";
 import { saveAs } from "file-saver";
 // 是否符合默认序号规范
 import { isDefaultSerialNum } from "@/utils/regexp";
 const AFormModelItem = AFormModel.Item;
 
+// 获取content-disposition响应头的默认文件名
+const getFileName = str => str.replace(/^.*filename="?([^"]+)"?.*$/, "$1");
+
 export default {
   name: "FileSetting",
   props: {
     fileSettings: {
       type: Object,
-      required: true,
+      required: true
     },
     diyForm: {
       type: Object,
-      required: true,
-    },
+      required: true
+    }
   },
   components: {
     ARow,
@@ -111,27 +114,27 @@ export default {
     AButton,
     AInputNumber,
     AFormModel,
-    AFormModelItem,
+    AFormModelItem
   },
   inject: ["parent"],
   // 没有自定义序号时不可操作
   computed: {
     disabled() {
       return !this.diyForm.diySerial;
-    },
+    }
   },
   data() {
     return {
-      serialNumVisable: !1,
+      serialNumVisible: !1,
       rules: {
         diySerial: [
           {
             required: true,
             message: "请输入自定义序号",
-            trigger: "blur",
-          },
-        ],
-      },
+            trigger: "blur"
+          }
+        ]
+      }
     };
   },
   methods: {
@@ -153,20 +156,16 @@ export default {
         method: "post",
         url: "/upload",
         data,
-        responseType: "blob",
+        responseType: "blob"
       })
-        .then((res) => {
+        .then(res => {
           const disposition = res.headers["content-disposition"];
           // 转换为Blob对象
           let file = new Blob([res.data], {
-            type: "application/zip",
+            type: "application/zip"
           });
           // 下载文件
-          saveAs(
-            file,
-            disposition.replace(/^.*filename="?([^"]+)"?.*$/, "$1") ||
-              "files.zip"
-          );
+          saveAs(file, getFileName(disposition));
           this.$message.success("修改成功");
         })
         .catch(() => {
@@ -174,13 +173,13 @@ export default {
         });
     },
     handleDiySerialNum() {
-      this.$refs.diyForm.validate((valid) => {
+      this.$refs.diyForm.validate(valid => {
         if (!valid) {
           return false;
         }
-        this.serialNumVisable = !1;
+        this.serialNumVisible = !1;
       });
-    },
-  },
+    }
+  }
 };
 </script>
