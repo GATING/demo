@@ -31,3 +31,9 @@
   > 配套教程 [node 实现文件属性批量修改(时间属性)](https://gatings.cn/2020-06-17/node%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9/)
 
   > 配套教程(博客园) [node 实现文件属性批量修改(时间属性)](https://www.cnblogs.com/gating/p/13154242.html)
+
+* [node 实现文件属性批量修改(文件名)](https://gating.gitee.io/demo/batch-modify-filenames/)
+
+  > 配套教材 [node 实现文件属性批量修改(文件名)](<https://gatings.cn/2020-07-05/node%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9(%E6%96%87%E4%BB%B6%E5%90%8D)/>)
+
+  > 配套教程(博客园) [node 实现文件属性批量修改(文件名)](https://www.cnblogs.com/gating/p/13243518.html)
