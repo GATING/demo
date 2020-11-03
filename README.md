@@ -42,4 +42,4 @@
 
   > 配套教材 [Vue+Antd 搭配百度地图实现搜索定位等功能](https://gatings.cn/2020-11-03/Vue+Antd%E6%90%AD%E9%85%8D%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E5%AE%9E%E7%8E%B0%E6%90%9C%E7%B4%A2%E5%AE%9A%E4%BD%8D%E7%AD%89%E5%8A%9F%E8%83%BD/)
 
-  > 配套教程(博客园) [Vue+Antd 搭配百度地图实现搜索定位等功能](https://www.cnblogs.com/gating/p/13243518.html)
+  > 配套教程(博客园) [Vue+Antd 搭配百度地图实现搜索定位等功能](https://www.cnblogs.com/gating/p/13919616.html)
