@@ -37,3 +37,9 @@
   > 配套教材 [node 实现文件属性批量修改(文件名)](<https://gatings.cn/2020-07-05/node%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9(%E6%96%87%E4%BB%B6%E5%90%8D)/>)
 
   > 配套教程(博客园) [node 实现文件属性批量修改(文件名)](https://www.cnblogs.com/gating/p/13243518.html)
+
+* [Vue+Antd 搭配百度地图实现搜索定位等功能](https://gating.gitee.io/demo/baidu-map-demo/)
+
+  > 配套教材 [Vue+Antd 搭配百度地图实现搜索定位等功能](https://gatings.cn/2020-11-03/Vue+Antd%E6%90%AD%E9%85%8D%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E5%AE%9E%E7%8E%B0%E6%90%9C%E7%B4%A2%E5%AE%9A%E4%BD%8D%E7%AD%89%E5%8A%9F%E8%83%BD/)
+
+  > 配套教程(博客园) [Vue+Antd 搭配百度地图实现搜索定位等功能](https://www.cnblogs.com/gating/p/13243518.html)
