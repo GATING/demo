@@ -1,0 +1,28 @@
+#!/usr/bin/env node
+
+const path = require('path')
+const spawn = require('cross-spawn')
+const configPath = require.resolve('vue-cli-plugin-vite/config/index.ts')
+const cwd = path.resolve(__dirname, '../')
+
+const params = [
+  `${process.env.BUILD ? 'build' : ''}`,
+  process.env.VITE_DEBUG ? '--debug' : '',
+  '--config',
+  `${configPath}`,
+  ...process.argv.slice(2)
+].filter(Boolean)
+
+console.log(`running: vite ${params.join(' ')}`)
+const serveService = spawn(
+  'babel-node --experimental-worker node_modules/vite/bin/vite.js',
+  params,
+  {
+    cwd,
+    stdio: 'inherit'
+  }
+)
+
+serveService.on('close', code => {
+  process.exit(code)
+})
