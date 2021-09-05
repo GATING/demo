@@ -33,6 +33,6 @@ export default {
   color: skyblue;
 }
 .hello {
-  @include bgCover('@/assets/logo.png');
+  @include bgCover('~@/assets/logo.png');
 }
 </style>

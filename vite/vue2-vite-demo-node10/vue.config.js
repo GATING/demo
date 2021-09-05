@@ -117,7 +117,7 @@ module.exports = {
        * disabled it if you do not use `~@/assets/logo.png` for better performance.
        * @default true
        */
-      cssLoaderCompat: true,
+      cssLoaderCompat: false,
       vitePluginVue2Options: {
         jsx: true
       }
